@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", function() {
     // ----------------------------------------------------------------------
     // MASTER TODO LIST: 
     // ----------------------------------------------------------------------
+    // TODO: Refactor with functional programming. EX:
+    //      Turn the functions into vars to be added to the app init.
+    //      The app variable can load DOM loads and the DOMContentLoaded
+    //      function can handle the function calls once the DOM is ready.
+    //      Possible solution to removing defer or adding async to <script>
     // TODO: Add Polling State Switch 
     // TODO: Add app.factory.webRTCElement = function(params) {};
     // 
@@ -209,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function() {
     */
 
     // Start Poll the Input Element for changes.
-    app.startPoll();
+    // app.startPoll();
     
     // Generate the new elements
     var newHeader = app.factory.header();
