@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //      The app variable can load DOM loads and the DOMContentLoaded
     //      function can handle the function calls once the DOM is ready.
     //      Possible solution to removing defer or adding async to <script>
+    // TODO: SOC Polling and Comments Functionality
     // TODO: Add Polling State Switch 
     // TODO: Add app.factory.webRTCElement = function(params) {};
     // 
@@ -32,21 +33,33 @@ document.addEventListener("DOMContentLoaded", function() {
     // TODO: Run Timeline Tests with app.js as async instead of defer
     // TODO: Test the performance hit for using setInterval vs Event Listeners
     // ----------------------------------------------------------------------
-    
+
     // Init App
     var app = {
         name: 'JS Factory Playground',
-        version: '0.5.1',
+        version: '0.5.3',
         author: 'Dustin Rea',
         description: 'A sandbox for playing with JS functionality.',
-        html: document.getElementById('app') // Gets <body id="app"> Element
+        html: document.getElementById('app'), // Gets <body id="app"> Element,
+        comments: {
+            pollSpeed: 750,
+            // Element Target to show client Poll Speed
+            pollSpeedElement: document.getElementById('comment-poll-speed'),
+            inputText: '',
+            outputText: '',
+            // Comment Element Targets
+            newCommentsElement: document.getElementById('new-comments-id'),
+            outputTarget: document.getElementById('new-commments-text-id'),
+            outputPreviewText: 'A Preview of Your Comment Appears Here.'
+        }
     };
     
+    // Generic Error Handler for Debugging    
     app.appError = function(errorString) {
         // Log Error to User Console.
         console.log('app.appError = ' + errorString);
     };
-    
+
     /*
     * ----------------------------------------------------------------------
     * Vanilla Poll for new data.
@@ -55,19 +68,6 @@ document.addEventListener("DOMContentLoaded", function() {
     * TODO: Add Polling State Switch 
     *   PSEUDO: app.startPoll{ on: || off: = function(currentCode); }
     */
-    
-    // Polling
-    app.comments = {
-        pollSpeed: 750,
-        // Element Target to show client Poll Speed
-        pollSpeedElement: document.getElementById('comment-poll-speed'),
-        inputText: '',
-        outputText: '',
-        // Comment Element Targets
-        newCommentsElement: document.getElementById('new-comments-id'),
-        outputTarget: document.getElementById('new-commments-text-id'),
-        outputPreviewText: 'A Preview of Your Comment Appears Here.'
-    };
     
     // Convert the Speed.toString() and insert the text into the element. 
     app.comments.pollSpeedElement.innerText = app.comments.pollSpeed.toString() + 'ms';
