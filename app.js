@@ -36,11 +36,11 @@ document.addEventListener("DOMContentLoaded", function() {
     // Init App
     var app = {
         name: 'JS Factory Playground',
-        version: '0.5.3',
+        version: '0.5.4',
         author: 'Dustin Rea',
         description: 'A sandbox for playing with JS functionality.',
         html: document.getElementById('app'), // Gets <body id="app"> Element,
-        polling: true,
+        polling: false,
         comments: {
             pollSpeed: 750,
             // Element Target to show client Poll Speed
@@ -50,6 +50,10 @@ document.addEventListener("DOMContentLoaded", function() {
             newCommentsElement: document.getElementById('new-comments-id'),
             outputTarget: document.getElementById('new-commments-text-id'),
             outputPreviewText: 'A Preview of Your Comment Appears Here.'
+        },
+        videocam: {
+            version: 'v0.4.1',
+            versionElement: document.getElementById('videocam-header-version')
         }
     };
     
@@ -66,12 +70,13 @@ document.addEventListener("DOMContentLoaded", function() {
     * ----------------------------------------------------------------------
     */
     
-    // Convert the Speed.toString() and insert the text into the element. 
-    app.comments.pollSpeedElement.innerText = app.comments.pollSpeed.toString() + 'ms';
-    
     app.startPoll = function() {
+        // Check if polling is enabled
         if(app.polling) { 
-            console.log('app.startPoll says polling is on.');
+            // Convert the Speed.toString() and insert the text into the element. 
+            app.comments.pollSpeedElement.innerText = app.comments.pollSpeed.toString() + 'ms';
+            
+            // Return the polling (interval) loop
             return setInterval(function() {
                 // Don't do anything until the input changes
                 if(app.comments.inputText.value != '') {
@@ -92,7 +97,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }, app.comments.pollSpeed);
         } else {
-            console.log('app.startPoll says polling is off.');
+            // Convert the Speed.toString() and insert the text into the element. 
+            app.comments.pollSpeedElement.innerText = 'Off';
         }
     };
     
@@ -149,7 +155,9 @@ document.addEventListener("DOMContentLoaded", function() {
     /*
     * ----------------------------------------------------------------------
     * WebRTC Bulit into the App
-    * myVersion: 0.4.0 - Below Code gets Video stream and Audio stream.
+    * myVersion: 0.4.0 
+    * Description: Checks for getUserMedia Support and checks vendor-prefixes
+    *       Gets Video stream and Audio stream if supported.
     * ----------------------------------------------------------------------
     * TODO: Add app.factory.webRTCElement = function(params) {};
     * ----------------------------------------------------------------------
@@ -224,6 +232,8 @@ document.addEventListener("DOMContentLoaded", function() {
     app.html.insertBefore(newSection, app.html.childNodes[1]);
     app.html.appendChild(newFooter);
     
+    app.videocam.versionElement.innerHTML = app.videocam.version;
+ 
     // Init WebRTC
     app.getUserVideoandAudio();
  
