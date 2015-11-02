@@ -45,8 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
             pollSpeed: 750,
             // Element Target to show client Poll Speed
             pollSpeedElement: document.getElementById('comment-poll-speed'),
-            inputText: '',
-            outputText: '',
+            inputText: document.getElementById('comment-id'),
             // Comment Element Targets
             newCommentsElement: document.getElementById('new-comments-id'),
             outputTarget: document.getElementById('new-commments-text-id'),
@@ -74,19 +73,15 @@ document.addEventListener("DOMContentLoaded", function() {
     
     app.startPoll = function() {
         return setInterval(function() {
-            app.comments.inputText = document.getElementById('comment-id');
-            // Store the input text (value) in an output var
-            app.comments.outputText = app.comments.inputText.value; // For input value ~ innerText()
-            
             // Don't do anything until the input changes
-            if(app.comments.outputText != '') {
+            if(app.comments.inputText.value != '') {
                 // Display the Text in input as a preview
-                app.comments.outputTarget.innerText = (app.comments.outputText);
+                app.comments.outputTarget.innerText = (app.comments.inputText.value);
                 
                 // Create the new element to contain the comment
                 var el = app.factory.section();
                 // Add ouputText to outputElement
-                el.innerText = app.comments.outputText + '\n'; 
+                el.innerText = app.comments.inputText.value + '\n'; 
                 // Append the new element to the comments
                 app.comments.newCommentsElement.appendChild(el);
                 
@@ -214,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function() {
     */
 
     // Start Poll the Input Element for changes.
-    // app.startPoll();
+    app.startPoll();
     
     // Generate the new elements
     var newHeader = app.factory.header();
