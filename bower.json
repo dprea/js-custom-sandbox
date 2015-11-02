@@ -1,0 +1,27 @@
+{
+  "name": "customsandbox",
+  "authors": [
+    "Dustin Rea <drea08@gmail.com>"
+  ],
+  "description": "A JS Playground for experimentation with HTML5 CSS3 and JS.",
+  "main": "app.js",
+  "moduleType": [],
+  "keywords": [
+    "HTML5",
+    "CSS3",
+    "JS"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.dustinrea.com/jsplayground",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webrtc-adapter": "~0.2.5"
+  }
+}

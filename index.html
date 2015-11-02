@@ -18,17 +18,13 @@
         
         <title>JS Playground</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
-        
     </head>
     <body id="app" name="app">
-        
         <!-- App.Factory will Insert Header Here -->
         <!-- App.Factory will Insert Section Here -->
-        
         <hr />
         
         <!-- WebRTC Playground -->
-        
         <section id="videocamSection">
             <h2>WebRTC Playground v0.3.2</h2>
             <!-- WebRTC Script Error Display Targert  -->
@@ -36,40 +32,39 @@
             <!-- WebRTC Script Targert -->
             <video autoplay></video>
         </section>
-   
         <!-- /END WebRTC Script Targert -->
-        
         <hr />
         
         <!-- Input Data Binding Playground -->
-        
-        <h2>Comment Style Input Data Binding Playground</h2>
-        
-        <h3>Polling at <span id="comment-poll-speed"></span></h3>
-        <h2 class="header-comments">Comments</h2>
-        
-        <div class="form-control">
-            <label for="comment">Your Comment:</label>
-            <input type="text" name="comment" 
-                class="comment-class" id="comment-id" 
-                placeholder="Write something dumb here. Please." /> 
-        </div>
-        
-        <div id="new-comments-id">
-            <h2 class="header-comments">Preview Comment:</h2>
-            <p id="new-commments-text-id">New Comment</p>
-            <h2 class="header-comments">New Comments</h2>
-        </div>
-        
+        <section id="commentSection">
+            <h2>Comment Style Input Data Binding Playground</h2>
+            
+            <h3>Polling at <span id="comment-poll-speed"></span></h3>
+            <h2 class="header-comments">Comments</h2>
+            
+            <div class="form-control">
+                <label for="comment">Your Comment:</label>
+                <input type="text" name="comment" 
+                    class="comment-class" id="comment-id" 
+                    placeholder="Write something dumb here. Please." /> 
+            </div>
+            
+            <div id="new-comments-id">
+                <h2 class="header-comments">Preview Comment:</h2>
+                <p id="new-commments-text-id">A Preview of Your Comment Appears Here.</p>
+                <h2 class="header-comments">New Comments</h2>
+            </div>
+        </section>
         <!-- /END Input Data Binding Playground -->
-        
         <hr />
-
+        
         <!-- SCRIPTS -->
+        <script type="text/javascript" src="bower_components/webrtc-adapter/adapter.js" defer></script>
+        <!-- App.js is the main application script. -->
         <script type="text/javascript" src="app.js" defer></script> 
+
         <!-- /END SCRIPTS -->
         
         <!-- App.Factory will Insert Footer Here -->
-        
     </body>
 </html>
