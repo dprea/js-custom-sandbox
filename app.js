@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
     //      function can handle the function calls once the DOM is ready.
     //      Possible solution to removing defer or adding async to <script>
     // TODO: SOC Polling and Comments Functionality
-    // TODO: Add Polling State Switch 
     // TODO: Add app.factory.webRTCElement = function(params) {};
     // 
     // ----------------------------------------------------------------------
@@ -41,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
         author: 'Dustin Rea',
         description: 'A sandbox for playing with JS functionality.',
         html: document.getElementById('app'), // Gets <body id="app"> Element,
+        polling: true,
         comments: {
             pollSpeed: 750,
             // Element Target to show client Poll Speed
@@ -64,33 +64,36 @@ document.addEventListener("DOMContentLoaded", function() {
     * Vanilla Poll for new data.
     * Mimics client-side data-binding
     * ----------------------------------------------------------------------
-    * TODO: Add Polling State Switch 
-    *   PSEUDO: app.startPoll{ on: || off: = function(currentCode); }
     */
     
     // Convert the Speed.toString() and insert the text into the element. 
     app.comments.pollSpeedElement.innerText = app.comments.pollSpeed.toString() + 'ms';
     
     app.startPoll = function() {
-        return setInterval(function() {
-            // Don't do anything until the input changes
-            if(app.comments.inputText.value != '') {
-                // Display the Text in input as a preview
-                app.comments.outputTarget.innerText = (app.comments.inputText.value);
-                
-                // Create the new element to contain the comment
-                var el = app.factory.section();
-                // Add ouputText to outputElement
-                el.innerText = app.comments.inputText.value + '\n'; 
-                // Append the new element to the comments
-                app.comments.newCommentsElement.appendChild(el);
-                
-                // Clear Output Variable After its apppended. 
-                app.comments.outputText = '';
-            } else {
-                app.comments.outputTarget.innerText = app.comments.outputPreviewText;
-            }
-        }, app.comments.pollSpeed);
+        if(app.polling) { 
+            console.log('app.startPoll says polling is on.');
+            return setInterval(function() {
+                // Don't do anything until the input changes
+                if(app.comments.inputText.value != '') {
+                    // Display the Text in input as a preview
+                    app.comments.outputTarget.innerText = (app.comments.inputText.value);
+                    
+                    // Create the new element to contain the comment
+                    var el = app.factory.section();
+                    // Add ouputText to outputElement
+                    el.innerText = app.comments.inputText.value + '\n'; 
+                    // Append the new element to the comments
+                    app.comments.newCommentsElement.appendChild(el);
+                    
+                    // Clear Output Variable After its apppended. 
+                    app.comments.outputText = '';
+                } else {
+                    app.comments.outputTarget.innerText = app.comments.outputPreviewText;
+                }
+            }, app.comments.pollSpeed);
+        } else {
+            console.log('app.startPoll says polling is off.');
+        }
     };
     
     // Factory for generating HTML Elements
