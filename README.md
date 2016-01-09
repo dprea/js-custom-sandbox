@@ -20,7 +20,3 @@ DISCLAIMER: This document is not complete and will probably never be complete gi
             * -style.css : The Main Stylesheet
         * __INFORMATION - Depth 1__
             * -README.md : Start Here with a Basic Introduction
-
-##Is Node Used? 
-
-Bower is installed Globally but not used.
