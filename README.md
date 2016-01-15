@@ -1,5 +1,10 @@
 #JS PLAYGROUND
 
+Currently uses a Plain HTML Style with Apache.  
+Front End JS Factories.
+WebRTC Playground.
+Node.js is not used in this app outside of bower. 
+
 This codebase is used as a playground for me to test HTML5, CSS3, and JS apps.
 
 DISCLAIMER: This is a playground.  It's only purpose is experimentation and learning.  
